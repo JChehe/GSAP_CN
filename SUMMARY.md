@@ -5,9 +5,9 @@
 * [TweenLite](1.md)
 * [DOCS Home](README.md)
 * [Cheat Sheet](cheat-sheet.md)
-* TweenMax
-* TimelineLite
-* TimelineMax
+* [TweenMax](tweenmax.md)
+* [TimelineLite](timelinelite.md)
+* [TimelineMax](timelinemax.md)
 
 ## Core
 
