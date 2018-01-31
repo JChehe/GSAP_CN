@@ -2,9 +2,9 @@
 
 ## Overview
 
-* [TweenLite](1.md)
 * [DOCS Home](README.md)
 * [Cheat Sheet](cheat-sheet.md)
+* [TweenLite](1.md)
 * [TweenMax](tweenmax.md)
 * [TimelineLite](timelinelite.md)
 * [TimelineMax](timelinemax.md)
