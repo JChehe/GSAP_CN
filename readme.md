@@ -4,5 +4,16 @@ GSAP（GreenSock Animation Platform）是一个由 Flash 转型到 HTML5 的动�
 
 
 
+也许你会有以下的一些疑问：
+
+1. 有强大的 CSS3，为什么还要使用 JavaScript 动画呢？
+2. CSS3 和 JavaScript 如何取舍？
+3. Web Animation API 会不会一统天下？
+4. ...
+
+目前我也是动画新人，不能解答以上种种疑惑。但我可以推荐一些资料，希望能解答你对动画的一些疑惑。
+
+1.
+
 
 
