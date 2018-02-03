@@ -11,7 +11,8 @@ GSAP（GreenSock Animation Platform）是一个由 Flash 转型到 HTML5 的动�
 
 目前我也是动画新人，不能解答以上种种疑惑。但我可以推荐一些资料，希望能解答你对动画的一些疑惑。
 
-1. [《Myth Busting: CSS Animations vs. JavaScript》](https://css-tricks.com/myth-busting-css-animations-vs-javascript/)，[译文&gt;&gt;](https://github.com/classicemi/blog/issues/3)
+1. [《Myth Busting: CSS Animations vs. JavaScript》](https://css-tricks.com/myth-busting-css-animations-vs-javascript/)，[译文&gt;&gt;](https://github.com/classicemi/blog/issues/3)
+2. [《Performant Web Animations and Interactions: Achieving 60 FPS》](https://blog.algolia.com/performant-web-animations/)
 
 
 
