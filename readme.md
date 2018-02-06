@@ -9,10 +9,29 @@ GSAP（GreenSock Animation Platform）是一个由 Flash 转型到 HTML5 的动�
 3. Web Animation API 会不会一统天下？
 4. ...
 
-目前我也是动画新人，不能解答以上种种疑惑。但我可以推荐一些资料，希望能解答你对动画的一些疑惑。
+目前我也是动画新人，不能详细地解答以上种种疑惑。但我可以推荐一些资料，希望能解答你对动画的一些疑惑。
 
 1. [《Myth Busting: CSS Animations vs. JavaScript》](https://css-tricks.com/myth-busting-css-animations-vs-javascript/)，[译文&gt;&gt;](https://github.com/classicemi/blog/issues/3)
 2. [《Performant Web Animations and Interactions: Achieving 60 FPS》](https://blog.algolia.com/performant-web-animations/)
+3. ...
+
+除了上述资料，也欢迎大家推荐更多和更优秀的资料。投放地址&gt;&gt;（新建一个issues）
+
+
+
+### 为何要翻译？
+
+各种各样的因素，有想法就做吧。
+
+当然，难免存在与官方文档不同步、翻译错误等一些问题。希望大家能积极指出，赋予文档生命力。
+
+另外，还是建议大家优先看官方文档（第一手资料）。
+
+
+
+### 不止于文档
+
+文档是晦涩的，在学习新知识时，我们一般难以从零散的文字整体认识一样东西。所以，
 
 
 
