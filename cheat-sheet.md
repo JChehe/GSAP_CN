@@ -1,4 +1,4 @@
-### Cheat Sheet（小抄）
+## Cheat Sheet（小抄）
 
 [PDF 中文版本下载&gt;&gt;（推荐）](https://img.aotu.io/gsap/GreenSock-Cheatsheet-4-CN.pdf)
 
