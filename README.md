@@ -1,4 +1,4 @@
-# 开始使用文档
+## 开始使用文档
 
 Animating with code may seem intimidating at first, but don’t worry, our platform was engineered to make it simple and intuitive.
 
@@ -31,8 +31,6 @@ Animating with code may seem intimidating at first, but don’t worry, our platf
 * Draggable
 
   Draggable 通过使用鼠标/触摸事件，让几乎所有 DOM 元素变得可拖拽、可旋转、可投掷，甚至弹性滚动。另外，它还能与 ThrowPropsPlugin（可选）完美集成，使用户能进行回弹和基于动量的减速过渡。
-
-
 
 #### GreenSock 官方练习（视频和电子书）
 
