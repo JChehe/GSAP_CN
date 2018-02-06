@@ -17,6 +17,10 @@ GSAP（GreenSock Animation Platform）是一个由 Flash 转型到 HTML5 的动�
 
 除了上述资料，也欢迎大家推荐更多和更优秀的资料。投放地址&gt;&gt;（新建一个issues）
 
+> GSAP 版权与收费说明：待补充
+
+
+
 ### 为何要翻译？
 
 各种各样的因素，有想法就做吧。
