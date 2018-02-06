@@ -3,6 +3,7 @@
 ## Overview
 
 * [README](readme.md)
+* [翻译约定](fan-yi-yue-ding.md)
 * [DOCS Home](README.md)
 * [Cheat Sheet](cheat-sheet.md)
 
