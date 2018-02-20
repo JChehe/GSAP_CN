@@ -1,7 +1,5 @@
 ## 开始使用文档
 
-Animating with code may seem intimidating at first, but don’t worry, our platform was engineered to make it simple and intuitive.
-
 “通过代码生成动画”的这种方式给人的第一感觉是：“不是吧？！”。但不用担心，本平台就是让这种方式变得简单、直观和可行。
 
 #### 查看文档主菜单
