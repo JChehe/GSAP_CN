@@ -100,20 +100,20 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 var tl = new TimelineLite({onComplete:myFunction});
 //add a tween
 tl.add( TweenLite.to(element, 1, {left:200, top:100}) );
-        
+
 //add another tween at the end of the timeline (makes sequencing easy)
 tl.add( TweenLite.to(element, 0.5, {opacity:0}) );
- 
+
 //append a tween using the convenience method (shorter syntax) and offset it by 0.5 seconds
 tl.to(element, 1, {rotation:30}, "+=0.5");
-         
+
 //reverse anytime
 tl.reverse();
 //Add a "spin" label 3-seconds into the timeline
 tl.addLabel("spin", 3);
 //insert a rotation tween at the "spin" label (you could also define the insertion point as the time instead of a label)
 tl.add( TweenLite.to(element, 2, {rotation:"+=360"}), "spin");
-    
+
 //go to the "spin" label and play the timeline from there
 tl.play("spin");
 //nest another TimelineLite inside your timeline...
@@ -124,15 +124,9 @@ tl.append(nested);
 
 ### timeline 是如何运作的，其内部机制是？
 
-
-
 ### 构造函数
 
-
-
 ### 属性
-
-
 
 ### 方法
 
