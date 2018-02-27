@@ -51,7 +51,90 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 
 可以在构建函数的 `vars` 参数中定义下面的特殊属性（语法案例：`new TimelineLite({onComplete:myFunction, delay:2});`）
 
-* delay
+* delay（Number）：动画开始前需要延迟的秒数（或帧数，基于帧的补间动画）。
+
+* 为 `true`  时，动画会在创建后立即停止。
+
+* onComplete（Function）：动画完成时的回调函数。
+
+* onCompleteScope（Object）：指定 onComplete 函数的作用域（即函数内 `"this"` 的引用）。
+
+* useFrames（Boolean）：若 useFrames 为 true，则补间动画的时刻（译者注：即刻度）是基于帧，而不是秒。因为它被添加到基于帧的根时间轴。这使其 duration 和 delay 均基于帧。补间动画实例的时刻模式总是由其父时间轴决定。
+
+* tweens（Array）：
+
+* align（String）：
+
+* stagger（Number）：
+
+* onStart（Function）：动画启动时的回调函数（即其 time 从 0 变到其他值，可触发多次，即补间动画多次重新启动）。
+
+* onStartScope（Object）：指定 `onStart` 函数的作用域（即函数内 `"this"` 的引用）。
+
+* onReverseComplete（Function）：动画反向运动到初始开始位时所触发的回调函数。例如，当 `reverse()` 被调用时，补间动画将反向运动到初始位置，当其 `time` 为 0 时，`onReverseComplete` 函数会被触发。即使将补间动画实例放置在 TimelineLite 或 TimelineMax 实例中，若 Timeline 实例反向运动且到达初始位置时（译者注：补间动画实例的初始位置）也会触发该函数（译者注：补间动画实例的 onReverseComplete 函数）。
+
+* onReverseCompleteScope（Object）：指定 onReverseComplete 函数的作用域（即函数内 `"this"` 的引用）。
+
+* onUpdate（Function）：动画每次更新都会触发的回调函数（即活跃状态下动画的每一帧）
+
+* onUpdateScope（Object）：指定 `onUpdate` 函数的作用域（即函数内 `"this"` 的引用）
+
+* autoRemoveChildren（Boolean）：
+
+* smoothChildTiming（Boolean）：
+
+* onCompleteParams（Array）：传入 `onComplete` 函数的参数数组。例如：`TweenLite.to(element, 1, { left: "100px", onComplete: myFunction, onCompleteParams: [element, "param2"] });`若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onCompleteParams:["{self}", "param2"]`
+
+* onStartParams（Array）：传入 `onStart` 函数的参数数组。例如 `TweenLite.to(element, 1, {left:"100px", delay:1, onStart:myFunction, onStartParams:[mc, "param2"]});` 若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onStartParams:["{self}", "param2"]`。
+
+* onUpdateParams（Array）：传入 `onUpdate` 函数的参数数组。例如 `TweenLite.to(element, 1, {left:"100px", onUpdate:myFunction, onUpdateParams:[mc, "param2"]});` 若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onUpdateParams:["{self}", "param2"]`。
+
+* onReverseCompleteParams（Array）：传入 `onReverseComplete` 函数的参数数组。例如 `TweenLite.to(element, 1, {left:"100px", onReverseComplete:myFunction, onReverseCompleteParams:[mc, "param2"]});`若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onReverseCompleteParams:["{self}", "param2"]`。
+
+* callbackScope（Object）：为所有回调函数设置作用域（onStart、onUpdate、onComplete 等）。作用域即回调函数内的 "this" 引用。指定特定回调函数作用域的老旧属性（onStartScope、onUpdateScope、onCompleteScope、onReverseComplete 等）已被弃用，但仍然可用。
+
+> 示例代码
+
+```js
+//create the timeline with an onComplete callback that calls myFunction() when the timeline completes
+var tl = new TimelineLite({onComplete:myFunction});
+//add a tween
+tl.add( TweenLite.to(element, 1, {left:200, top:100}) );
+        
+//add another tween at the end of the timeline (makes sequencing easy)
+tl.add( TweenLite.to(element, 0.5, {opacity:0}) );
+ 
+//append a tween using the convenience method (shorter syntax) and offset it by 0.5 seconds
+tl.to(element, 1, {rotation:30}, "+=0.5");
+         
+//reverse anytime
+tl.reverse();
+//Add a "spin" label 3-seconds into the timeline
+tl.addLabel("spin", 3);
+//insert a rotation tween at the "spin" label (you could also define the insertion point as the time instead of a label)
+tl.add( TweenLite.to(element, 2, {rotation:"+=360"}), "spin");
+    
+//go to the "spin" label and play the timeline from there
+tl.play("spin");
+//nest another TimelineLite inside your timeline...
+var nested = new TimelineLite();
+nested.to(element, 1, {left:400}));
+tl.append(nested);
+```
+
+### timeline 是如何运作的，其内部机制是？
+
+
+
+### 构造函数
+
+
+
+### 属性
+
+
+
+### 方法
 
 
 
