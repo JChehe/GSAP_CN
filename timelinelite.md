@@ -15,7 +15,7 @@ var tl = new TimelineLite();
 tl.add( TweenLite.to(element, 1, {left:100}) );
 tl.add( TweenLite.to(element, 1, {top:50}) );
 tl.add( TweenLite.to(element, 1, {opacity:0}) );
- 
+
 //then later, control the whole thing...
 tl.pause();
 tl.resume();
@@ -33,8 +33,6 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 
 现在你就可以随意地调整任意一个补间动画，而无须担心延时时间的涓滴效应。增加第一个补间动画的过渡时间后，其余将自动调整。
 
-
-
 下面是 TimelineLite 的其他一些好处和特点：
 
 * 只要你想，东西（译者注：如补间动画实例、时间轴实例等）可以在时间轴上重叠放置，并拥有这些补间动画和时间轴的所有控制权。其他大多数动画工具只能做一个接着一个的基本队列操作，而不能发生重叠。若想追加一个补间动画来移动一个对象，并且你希望它在该补间结束前0.5秒开始淡出？使用 TimelineLite 就很容易实现这个情景。
@@ -44,12 +42,16 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 * 使用 `progress()` 方法获取或设置时间的进度。如快进至中点：`myTimeline.progress(0.5);`
 * 对 `time` 或 `progress` 进行补间动画，以实现时间轴的快进/后退。甚至可以将两者其中一个属性绑定到滑块（slider）上，让用户能通过拖拽实现快进/后退时间轴。
 * 可向构造函数的 `vars` 参数对象添加 `onComplete、onStart、onUpdate、onReverseComplete` 回调函数，如 `var tl = new TimelineLite({onComplete:myFunction});`
-* 可通过 kill\(null, target\) 取消掉时间轴内特定对象的补间动画、可通过 getTweensOf\(\) 获取对象的补间动画、可通过 getChildren\(\) 获取时间轴内所有补间动画/时间轴。
-* 向 vars 参数设置 useFrames: true，即可将原本基于秒的刻度改为帧。请注意，时间轴的时刻模式也决定了其子元素的时刻模式。
-* 可随时通过 TimelineLite.exportRoot\(\) 将根（主）时间轴的所有补间动画/时间轴导出到该 TimelineLite 实例中，以便可以对他们所有进行 pause\(\)、timeScale\(\) 等操作。但不影响后续创建的补间动画/时间轴。设想一个游戏，其所有动画均由 GSAP 驱动，现在需要在弹出窗口时进行暂停或减速操作。使用该方法是不是使得这一操作变得很简单？
-* 若需要更多诸如 repeat、repeatDelay、yoyo、currentLabel\(\)、getLabelAfter\(\)、getLabelBefore\(\)、addCallback\(\)、removeCallback\(\)、getActive\(\) 等特性，请使用 TimelineLite 的扩展版——TweenMax。
+* 可通过 `kill(null, target)` 取消掉时间轴内特定对象的补间动画、可通过 `getTweensOf()` 获取对象的补间动画、可通过 `getChildren()` 获取时间轴内所有补间动画/时间轴。
+* 向 `vars` 参数设置 `useFrames: true`，即可将原本基于秒的刻度改为帧。请注意，时间轴的时刻模式也决定了其子元素的时刻模式。
+* 可随时通过 `TimelineLite.exportRoot()` 将根（主）时间轴的所有补间动画/时间轴导出到该 TimelineLite 实例中，以便可以对他们所有进行 `pause()`、`timeScale()` 等操作。但不影响后续创建的补间动画/时间轴。设想一个游戏，其所有动画均由 GSAP 驱动，现在需要在弹出窗口时进行暂停或减速操作。使用该方法是不是使得这一操作变得很简单？
+* 若需要更多诸如 `repeat、repeatDelay、yoyo、currentLabel()、getLabelAfter()、getLabelBefore()、addCallback()、removeCallback()、getActive()` 等特性，请使用 TimelineLite 的扩展版——TweenMax。
 
+### 特殊属性、缓动和回调函数
 
+可以在构建函数的 `vars` 参数中定义下面的特殊属性（语法案例：`new TimelineLite({onComplete:myFunction, delay:2});`）
+
+* delay
 
 
 
