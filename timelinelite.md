@@ -126,9 +126,53 @@ tl.append(nested);
 
 ### 构造函数
 
+TimelineLite\( vars: Object \);
+
 ### 属性
 
+autoRemoveChildren（Boolean）：true 代表子元素（补间动画/时间轴）完成自身动画后会自动被删除。
+
+data（\*）：可存储任意数据的地方（若 vars.data 不为空，则在初始化时填入）。
+
+smoothChildTiming（Boolean）：
+
+timeline（SimpleTimeline）\[只读\]：
+
+vars（Object）：
+
 ### 方法
+
+add\( value: \*, position: \*, align: String, stagger: Number \): \*
+
+addLabel\( label: String, position: \* \)：\*
+
+addPause\( position: \*, callback: Function, params: Array, scope: \* \): \*
+
+call\( callback: Function, params: Array, scope: \*, position: \* \): \*
+
+clear\( labels: Boolean \): \*
+
+delay\( value: Number \): \*
+
+duration\( value: Number \): \*
+
+endTime\( includeRepeats: Boolean \): Number
+
+eventCallback\( type: String, callback: Function, params: Array, scope: \* \): \*
+
+exportRoot\( vars: Object, omitDelayedCalls: Boolean \): TimelineLite
+
+[from](https://greensock.com/docs/TimelineLite/from%28%29)\( target:Object, duration:Number, vars:Object, position:\*\) :\*
+
+[fromTo](https://greensock.com/docs/TimelineLite/fromTo%28%29)\( target:Object, duration:Number, fromVars:Object, toVars:Object, position:\*\) :\*
+
+[getChildren](https://greensock.com/docs/TimelineLite/getChildren%28%29)\( nested:Boolean, tweens:Boolean, timelines:Boolean, ignoreBeforeTime:Number\) :Array
+
+[getLabelTime](https://greensock.com/docs/TimelineLite/getLabelTime%28%29)\( label:String\) :Number
+
+[getTweensOf](https://greensock.com/docs/TimelineLite/getTweensOf%28%29)\( target:Object, nested:Boolean\) :Array
+
+[invalidate](https://greensock.com/docs/TimelineLite/invalidate%28%29)\( \) :\*
 
 
 
