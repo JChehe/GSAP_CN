@@ -136,43 +136,185 @@ data（\*）：可存储任意数据的地方（若 vars.data 不为空，则在
 
 smoothChildTiming（Boolean）：
 
-timeline（SimpleTimeline）\[只读\]：
+timeline（SimpleTimeline）\[只读\]：父时间轴。
 
-vars（Object）：
+vars（Object）：构建函数的参数 vars 存放着配置变量，如 onComplete、onUpdate 等。
 
 ### 方法
 
-add\( value: \*, position: \*, align: String, stagger: Number \): \*
+**add\( value: \*, position: \*, align: String, stagger: Number \): \***
 
-addLabel\( label: String, position: \* \)：\*
+\[override\] 向时间轴添加补间动画、时间轴、回调函数或标记（均可为数组）。
 
-addPause\( position: \*, callback: Function, params: Array, scope: \* \): \*
+**addLabel\( label: String, position: \* \)：\***
 
-call\( callback: Function, params: Array, scope: \*, position: \* \): \*
+向时间轴添加标记，标记重要的位置/时间。
 
-clear\( labels: Boolean \): \*
+**addPause\( position: \*, callback: Function, params: Array, scope: \* \): \***
 
-delay\( value: Number \): \*
+向特定时间点或标记处插入一个暂停时间轴播放的回调函数。
 
-duration\( value: Number \): \*
+**call\( callback: Function, params: Array, scope: \*, position: \* \): \***
 
-endTime\( includeRepeats: Boolean \): Number
+向时间轴末端添加一个回调函数（或通过指定 "position" 参数添加到别处）。其实这与 add\(TweenLite.delayedCall\(...\)\) 完全相同，只不过是更少代码的实现方式。
 
-eventCallback\( type: String, callback: Function, params: Array, scope: \* \): \*
+**clear\( labels: Boolean \): \***
 
-exportRoot\( vars: Object, omitDelayedCalls: Boolean \): TimelineLite
+清空时间轴内所有补间动画、时间轴和回调函数（可选标记）。
 
-[from](https://greensock.com/docs/TimelineLite/from%28%29)\( target:Object, duration:Number, vars:Object, position:\*\) :\*
+**delay\( value: Number \): \***
 
-[fromTo](https://greensock.com/docs/TimelineLite/fromTo%28%29)\( target:Object, duration:Number, fromVars:Object, toVars:Object, position:\*\) :\*
+获取或设置动画的初始延时时间，单位为秒（或帧，基于帧的动画）。
 
-[getChildren](https://greensock.com/docs/TimelineLite/getChildren%28%29)\( nested:Boolean, tweens:Boolean, timelines:Boolean, ignoreBeforeTime:Number\) :Array
+**duration\( value: Number \): \***
 
-[getLabelTime](https://greensock.com/docs/TimelineLite/getLabelTime%28%29)\( label:String\) :Number
+\[override\] 获取时间轴的持续时间。当将其作为 setter 时，则通过调整时间轴的 timeScale 属性，以满足指定的持续时间。
 
-[getTweensOf](https://greensock.com/docs/TimelineLite/getTweensOf%28%29)\( target:Object, nested:Boolean\) :Array
+**endTime\( includeRepeats: Boolean \): Number**
 
-[invalidate](https://greensock.com/docs/TimelineLite/invalidate%28%29)\( \) :\*
+根据父时间轴的本地时间返回动画完成的时间。
 
+**eventCallback\( type: String, callback: Function, params: Array, scope: \* \): \***
 
+获取或设置一个回调函数，如 "onComplete"、"onUpdate"、"onStart"、"onReverseComplete" 和 "onRepeat"（onRepeat 仅在 TweenMax 和 TimelineMax 实例有效），可向回调函数传入任意参数。
+
+**exportRoot\( vars: Object, omitDelayedCalls: Boolean \): TimelineLite**
+
+\[静态\] 无缝地将根时间轴上的补间动画、时间轴和 delayedCall（可选）转移到一个新 TimelineLite 实例上。这样就可以将该 TimelineLite 实例看作是全局的，以便执行一些整体操作。当然，这并不影响后续创建的补间动画/时间轴。
+
+[**from**](https://greensock.com/docs/TimelineLite/from%28%29)**\( target:Object, duration:Number, vars:Object, position:\* \) :\***
+
+向时间轴末端添加一个 TweenLite.from\(\) 补间动画（或通过 "position" 参数添加到别处）。其实这与 add\( TweenLite.from\(...\) \) 完全相同，只不过是更少代码的实现方式。
+
+[**fromTo**](https://greensock.com/docs/TimelineLite/fromTo%28%29)**\( target:Object, duration:Number, fromVars:Object, toVars:Object, position:\* \) :\***
+
+向时间轴末端添加一个 TweenLite.fromTo\(\) 补间动画（或通过 "position" 参数添加到别处）。其实这与 add\( TweenLite.fromTo\(...\) \) 完全相同，只不过是更少代码的实现方式。
+
+[**getChildren**](https://greensock.com/docs/TimelineLite/getChildren%28%29)**\( nested:Boolean, tweens:Boolean, timelines:Boolean, ignoreBeforeTime:Number \) :Array**
+
+返回由嵌套在该时间轴的所有补间动画/时间轴组成的数组。
+
+[**getLabelTime**](https://greensock.com/docs/TimelineLite/getLabelTime%28%29)**\( label:String \) :Number**
+
+返回特定标记所在的时间点。
+
+[**getTweensOf**](https://greensock.com/docs/TimelineLite/getTweensOf%28%29)**\( target:Object, nested:Boolean \) :Array**
+
+返回时间轴内特定对象的补间动画。
+
+[**invalidate**](https://greensock.com/docs/TimelineLite/invalidate%28%29)**\( \) :\***
+
+\[override\] 清除所有初始化数据（如补间动画的初始值/结束值）。若想重新启动补间动画而不还原任何先前记录的初始值，那么这将非常有用。
+
+[**isActive**](https://greensock.com/docs/TimelineLite/isActive%28%29)**\( \) :Boolean**
+
+判断动画目前是否处于活跃状态（即进度条在此实例的时间范围内移动，并且没有暂停，其祖先时间轴同理）。
+
+[**kill**](https://greensock.com/docs/TimelineLite/kill%28%29)**\( vars:Object, target:Object \) :\***
+
+根据参数完全取消整个或部分动画。
+
+[**pause**](https://greensock.com/docs/TimelineLite/pause%28%29)**\( atTime:\*, suppressEvents:Boolean \) :\***
+
+暂停实例，可快进至特定时间。
+
+[**paused**](https://greensock.com/docs/TimelineLite/paused%28%29)**\( value:Boolean \) :\***
+
+获取和设置动画的暂停状态，判断动画当前是否存于暂停状态。
+
+[**play**](https://greensock.com/docs/TimelineLite/play%28%29)**\( from:\*, suppressEvents:Boolean \) :\***
+
+开始正向播放，可快进至特定时间（默认情况下，将从当前进度开始播放）。
+
+[**progress**](https://greensock.com/docs/TimelineLite/progress%28%29)**\( value:Number, suppressEvents:Boolean \) :\***
+
+获取或设置动画的进度，取值范围为 0~1（不包含 repeats）。0 代表初始位置，0.5 代表中间位置，1 代表结束位置（完成）。
+
+[**recent**](https://greensock.com/docs/TimelineLite/recent%28%29)**\( \) :Animation**
+
+返回更近添加的补间动画/时间轴/回调函数，与其在时间轴上的位置无关。
+
+[**remove**](https://greensock.com/docs/TimelineLite/remove%28%29)**\( value:\* \) :\***
+
+从时间轴上移除一个补间动画、时间轴、回调函数或标记（均可为数组）。
+
+[**removeLabel**](https://greensock.com/docs/TimelineLite/removeLabel%28%29)**\( label:String \) :\***
+
+从时间轴上移除一个标记，并返回该标记所在的时间点。
+
+[**render**](https://greensock.com/docs/TimelineLite/render%28%29)**\( time:Number, suppressEvents:Boolean, force:Boolean \) :**
+
+渲染。
+
+[**restart**](https://greensock.com/docs/TimelineLite/restart%28%29)**\( includeDelay:Boolean, suppressEvents:Boolean \) :\***
+
+重新正向播放。
+
+[**resume**](https://greensock.com/docs/TimelineLite/resume%28%29)**\( from:\*, suppressEvents:Boolean \) :\***
+
+在不改变方向（正向或反向）的情况下恢复播放，可首先快进至特定时间。+
+
+[**reverse**](https://greensock.com/docs/TimelineLite/reverse%28%29)**\( from:\*, suppressEvents:Boolean \) :\***
+
+反向播放，动画的所有方面都反向，包括缓动函数。
+
+[**reversed**](https://greensock.com/docs/TimelineLite/reversed%28%29)**\( value:Boolean \) :\***
+
+获取或设置动画的反向状态，判断动画是否反向播放。
+
+[**seek**](https://greensock.com/docs/TimelineLite/seek%28%29)**\( position:\*, suppressEvents:Boolean \) :\***
+
+\[override\] 直接快进至特定时间（或标记），无论实例是否是暂停或反向。
+
+[**set**](https://greensock.com/docs/TimelineLite/set%28%29)**\( target:Object, vars:Object, position:\* \) :\***
+
+向时间轴末端添加一个过渡时间为 0 的补间动画（或通过 "position" 参数指定其它位置） ，即当进度达到特定位置时立刻设置值。其实这与 add\( TweenLite.to\(target, 0, {...}\) \) 完全相同，只不过是更少代码的实现方式。
+
+[**shiftChildren**](https://greensock.com/docs/TimelineLite/shiftChildren%28%29)**\( amount:Number, adjustLabels:Boolean, ignoreBeforeTime:Number \) :\***
+
+根据时间（秒/帧）和可选的 adjustLabel，调整时间轴上所有子元素的 startTime。
+
+[**staggerFrom**](https://greensock.com/docs/TimelineLite/staggerFrom%28%29)**\( targets:Array, duration:Number, vars:Object, stagger:Number, position:\*, onCompleteAll:Function, onCompleteAllParams:Array, onCompleteScope:\* \) :\***
+
+将目标对象数组进行初始值相同的补间动画（将当前值作为目标值），但将每个目标对象的启动时间按指定时间进行错开，从而以尽可能少的代码创建一个间隔均匀的序列。
+
+[**staggerFromTo**](https://greensock.com/docs/TimelineLite/staggerFromTo%28%29)**\( targets:Array, duration:Number, fromVars:Object, toVars:Object, stagger:Number, position:\*, onCompleteAll:Function, onCompleteAllParams:Array, onCompleteScope:\*\) :\***
+
+对目标对象数组指定相同的初始值和目标值，但将每个目标对象的启动时间按指定时间进行错开，从而以尽可能少的代码创建一个间隔均匀的序列。
+
+[**staggerTo**](https://greensock.com/docs/TimelineLite/staggerTo%28%29)**\( targets:Array, duration:Number, vars:Object, stagger:Number, position:\*, onCompleteAll:Function, onCompleteAllParams:Array, onCompleteScope:\* \) :\***
+
+将目标对象数组进行目标值相同的补间动画，但将每个目标对象的启动时间按指定时间进行错开，从而以尽可能少的代码创建一个间隔均匀的序列。
+
+[**startTime**](https://greensock.com/docs/TimelineLite/startTime%28%29)**\( value:Number \) :\***
+
+获取或设置动画在其父时间轴上的开始时间（在延迟时间之后）。
+
+[**time**](https://greensock.com/docs/TimelineLite/time%28%29)**\( value:Number, suppressEvents:Boolean \) :\***
+
+获取或设置进度条的本地位置（本质是当前时间），单位为秒（或帧，基于帧的动画），不小于 0 且不大于动画的持续时间。
+
+[**timeScale**](https://greensock.com/docs/TimelineLite/timeScale%28%29)**\( value:Number \) :\***
+
+用于缩放动画时间的因子，其中 1 为正常速度（默认），0.5 = 半速，2 = 两倍速度，以此类推。
+
+[**to**](https://greensock.com/docs/TimelineLite/to%28%29)**\( target:Object, duration:Number, vars:Object, position:\* \) :\***
+
+向时间轴末端添加一个 TweenLite.to\(\) 补间动画（或通过 "position" 参数添加到别处）。其实这与 add\( TweenLite.to\(...\) \) 完全相同，只不过是更少代码的实现方式。
+
+[**totalDuration**](https://greensock.com/docs/TimelineLite/totalDuration%28%29)**\( value:Number \) :\***
+
+\[override\] 获取或设置动画的总持续时间。当将其作为 setter 时，则通过调整时间轴的 timeScale 属性，以满足指定的持续时间。
+
+[**totalProgress**](https://greensock.com/docs/TimelineLite/totalProgress%28%29)**\( value:Number, suppressEvents:Boolean \) :\***
+
+获取或设置动画总进度（包含重复次数（repeats）），取值区间为 0~1，0 代表初始位置，0.5 代表中点位置、1 代表结束位置（完成）。
+
+[**totalTime**](https://greensock.com/docs/TimelineLite/totalTime%28%29)**\( time:Number, suppressEvents:Boolean \) :\***
+
+根据总持续时间（totalDuration）获取或设置进度条的位置，包含所有重复次数（repeats）和重复延迟时间（repeatDelays）（这两者仅在 TweenMax 和 TimelineMax 中可用）。
+
+[**useFrames**](https://greensock.com/docs/TimelineLite/useFrames%28%29)**\( \) :Boolean**
+
+\[只读\] true 代表时间轴的时刻是帧而不是秒。
 
