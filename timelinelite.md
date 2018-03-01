@@ -71,9 +71,9 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 
   * "normal"：所有补间动画的启动时间相同（受子元素的延迟时间影响）
 
-  align 属性并不会强制所有子元素（补间动画/时间轴）去维持其相对位置。例如：在使用 "sequence" 的情况下，修改其中一个补间动画的持续时间，但这并不会强制修改其后续时间轴的位置。
+  align 属性并不会强制所有子元素（补间动画/时间轴）去维持其相对位置。例如：在使用 "sequence" 的情况下，修改其中一个补间动画的持续时间，这并不会强制修改其后续所有时间轴的位置。align 属性仅对初始化时通过 vars 对象的 tweens 属性添加的补间动画有效。
 
-* stagger（Number）：仅适用于通过 tweens 属性一次性插入多个补间动画时使用。根据设置的秒数（或帧，基于帧的动画）错开所有补间动画。如：stagger 为 0.5、"align" 属性为 "start"，那么第二个补间动画将比第一个迟 0.5 秒启动，而第三个补间动画则再迟 0.5 后启动，如此类推。若 align 属性为 "sequence" =，那么这 0.5 秒将添加到每个补间动画之间。默认值为 0。
+* stagger（Number）：仅适用于通过 tweens 属性一次性插入多个补间动画时使用。根据设置的秒数（或帧，基于帧的动画）错开所有补间动画。如：stagger 为 0.5、"align" 属性为 "start"，那么第二个补间动画将比第一个迟 0.5 秒启动，而第三个补间动画则再迟 0.5 后启动，如此类推。若 align 属性为 "sequence"，那么这 0.5 秒将添加到每个补间动画之间。默认值为 0。
 
 * onStart（Function）：动画启动时的回调函数（即其 time 从 0 变到其他值，可触发多次，即补间动画多次重新启动）。
 
@@ -87,9 +87,9 @@ tl.to(element, 1, {left:100}).to(element, 1, {top:50}).to(element, 1, {opacity:0
 
 * onUpdateScope（Object）：指定 `onUpdate` 函数的作用域（即函数内 `"this"` 的引用）
 
-* autoRemoveChildren（Boolean）：
+* autoRemoveChildren（Boolean）：若 autoRemoveChildren 为 true，那么子元素（tweens/timelines）一旦完成后就会被移除。但这一般并需要，因为这阻止了后续回看的操作（如 reverse\(\) 或通过 progress\(\) 回看等）。该操作能提升速度和改善内存管理。
 
-* smoothChildTiming（Boolean）：
+* smoothChildTiming（Boolean）：控制子元素（tweens/timelines）在更改属性时，是否需要自动重新定位（改变它们的 startTime），以维持播放的流畅性（译者注：即不会突变以赶上父时间轴的播放进度，而是通过更改它们的 startTime，以使启动时间与父时间轴的当前进度一致，案例：[https://codepen.io/JChehe/pen/mXvMwN](https://codepen.io/JChehe/pen/mXvMwN)）。例如：有一个将元素的 left 属性从 0 过渡到 100 的补间动画，其父时间轴的当前进度在该补间动画的 75% 进度处，此刻补间动画调用 reverse\(\) 方法。若 smoothChildTiming 是 false（默认值，根时间轴除外），那么补间动画将原地反转，但其 startTime 保持不变。因此，父时间轴的当前进度将处在补间动画的 25% 处，而不是 75%。记住：时间轴的进度和播放方向是不受其子元素（tweens/timinlines）改变的影响。元素的 left 属性将从 75 跳到 25，而补间动画在时间轴上的位置保持不变。若 smoothChildTiming 为 true，那么补间动画的 startTime 将进行调整，由于在 reverse\(\) 之前被调用，则时间轴的当前进度将与补间动画的当前进度相同。从而动画呈现出来是丝滑的（译者注：无跳动）。元素的 left 属性依然是 75，并随着进度移动。补间动画的 reverse\(\) 操作让 left 属性过渡到 0，而不是 100。最终，这是优先考虑子元素（补间动画/时间轴）播放连续性还是位置一致性的决定。smoothChildTiming 为 true 时，子元素（tweens/timelines）以下属性的更改会导致 startTime 的更改：reversed、timeScale、progress、totalProgress、time、totalTime、delay、pause、resume、duration 和 totalDuration。
 
 * onCompleteParams（Array）：传入 `onComplete` 函数的参数数组。例如：`TweenLite.to(element, 1, { left: "100px", onComplete: myFunction, onCompleteParams: [element, "param2"] });`若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onCompleteParams:["{self}", "param2"]`
 
