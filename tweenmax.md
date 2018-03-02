@@ -34,7 +34,7 @@ TweenMax.to(element, 1, {opacity:0, onComplete:completeHandler, ease:Back.easeOu
 * onRepeat（Function）：动画每次重复播放时的回调函数。
 * onRepeatParams（Array）：传入`onRepeat` 函数的参数数组。例如：`TweenMax.to(mc, 1, {x:100, onRepeat:myFunction, onRepeatParams:[mc, "param2"]});`若需要在参数列表中引用补间动画实例自身，可使用`"{self}"`，如：`onRepeatParams:["{self}", "param2"]`
 * onRepeatScope（Object）：指定 `onRepeat` 函数的作用域（即函数内`"this"`的引用）。
-* startAt（Object）：
+* startAt（Object）：允许你定义补间动画属性的初始值。一般情况下，TweenMax 使用当前值作为初始值（无论何时启动补间动画），但 `startAt` 允许你覆盖这种行为。只需在动画开始前简单地传入对象（任何属性）即可。例如，当前 `mc.x` 当前值是 100，而你需要进行从 0 到 500 的补间动画，则 `TweenMax.to(mc, 2, {x:500, startAt:{x:0}});`
 
 ### 插件
 
