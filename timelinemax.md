@@ -4,11 +4,11 @@ TimelineMax 对 TimelineLite 进行了扩展，在 TimelineLite 的基础上增�
 
 > 译者注：对于与 TimelineLite 重复的文档，在 TimelineMax 中就尽量省去。避免冗余，保证文档精简。
 
-**下面是 TimelineLite 的其他一些好处和特点：**
+**下面是 TimelineMax 的其他一些好处和特点：**
 
 * 对 time\(\)、totalTime\(\)、progress\(\) 或 totalProgress\(\) 的参数进行补间动画，以实现时间轴的快进/后退。甚至可以将两者中的一个绑定到滑块（slider）上，让用户能通过拖拽实现快进/后退时间轴。
 
-* 可向构造函数的 `vars` 参数对象添加 `onComplete、onStart、onUpdate、onRepeat、onReverseComplete` 回调函数，如 `var tl = new TimelineLite({onComplete:myFunction});`
+* 可向构造函数的 `vars` 参数对象添加 `onComplete、onStart、onUpdate、onRepeat、onReverseComplete` 回调函数，如 `var tl = new TimelineMax({onComplete:myFunction});`
 
 * 可对时间轴设置数次/无限次循环播放，也可以设置每次循环之间的延迟时间或设置为 yoyo 状态，以呈现来回循环播放的效果。
 
