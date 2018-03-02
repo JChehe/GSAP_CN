@@ -50,7 +50,7 @@ TweenMax\( target: Object, duration: Number, vars: Object \);
 
 ### 属性
 
-与 TweenLite 相同。
+与 TweenLite 相同，缺省
 
 ### 方法
 
